@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Lav din egen Jule&#0248;nskeliste</title>
+        <!-- <meta name="color-scheme" content="light dark"> -->
+    </head>
+
+    <body style="background-image: url('https://images.pexels.com/photos/6101961/pexels-photo-6101961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+        <h1>Lav din egen Jule&#0248;nskeliste</h1>
+        <input id="nameInput" placeholder="Navn"><br><br>
+        <div id="my_first_divider_ever">
+            <input style="width: 250px;" placeholder="Skriv her...">
+        </div>
+        <button onclick="newWish()" id="newWishButton">Nyt Ønske</button><br><br>
+        <button onclick="sendToSanta()" id="sendToSanta" style="background-color: limegreen; width: 250px; height: 75px; font-size: x-large; font: bold;">Send til Julemanden</button>
+
+        <script>
+            const divider = document.getElementById("my_first_divider_ever")
+
+            function newWish(){
+                const newWishElement = document.createElement("input")
+                newWishElement.style = "width: 250px;"
+                newWishElement.placeholder = "Skriv her..."
+                divider.appendChild(document.createElement("br"))
+                divider.appendChild(newWishElement)
+            }
+
+            function sendToSanta(){
+                document.getElementById("newWishButton").remove()
+                document.getElementById("nameInput").remove()
+                document.getElementById("sendToSanta").remove()
+                
+                const envelope = document.createElement("img")
+
+                envelope.src = "https://cdn.creazilla.com/cliparts/77571/open-envelope-clipart-lg.png"
+                envelope.width = 200
+                envelope.height = 100
+                divider.appendChild(document.createElement("br"))
+                document.body.appendChild(envelope)
+                setTimeout(() => {
+                    envelope.src = "https://i.pinimg.com/originals/d6/6d/5e/d66d5ec9b4b4f944793c19aab587e5e5.png"
+                    while (divider.children.length > 0) {
+                        let child = divider.children[divider.children.length - 1]
+                        child.remove()
+                    }
+                    setTimeout(() => {
+                        envelope.remove()
+                        const sendt = document.createElement("h3")
+                        document.body.innerHTML = "<h1>Sendt 🎉🧑‍🎄</h1>"
+                        document.body.appendChild(sendt)
+                    },1000)
+                },500)
+            }
+        </script>
+    </body>
+</html>
